@@ -15,6 +15,7 @@ class myCell: UITableViewCell {
     @IBOutlet weak var summFact: UILabel!
     @IBOutlet weak var budget: UILabel!
     @IBOutlet weak var percent: UILabel!
+    @IBOutlet weak var roomName2: UILabel!
     
     func configureByRoom(by room: roomList) {
         roomName.text = room.roomName
@@ -66,6 +67,7 @@ class myCell: UITableViewCell {
     
     func configureByWork2(by room: roomList) {
         roomName.text = room.workName //+ room.roomName
+        roomName2.text = room.roomName2
         summPlan.text = separatedNumber(room.summPlan) + " p"
         summFact.text = separatedNumber(room.summFact)  + " p"
         percent.text = separatedNumber(room.recent)  + " %"

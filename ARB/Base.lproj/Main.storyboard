@@ -223,6 +223,13 @@
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ENo-gK-M2Q">
+                                            <rect key="frame" x="16" y="27" width="134" height="21"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
                                     </subviews>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </tableViewCellContentView>
@@ -231,6 +238,7 @@
                                     <outlet property="budget" destination="SLb-wG-wzD" id="VeO-GL-a7Y"/>
                                     <outlet property="percent" destination="iqK-FI-v9s" id="u15-tc-l0A"/>
                                     <outlet property="roomName" destination="lFr-Ob-gD4" id="3x7-X5-1N5"/>
+                                    <outlet property="roomName2" destination="ENo-gK-M2Q" id="NBL-GQ-oHQ"/>
                                     <outlet property="summFact" destination="yFk-vG-mdj" id="JBm-J4-jHJ"/>
                                     <outlet property="summPlan" destination="agq-eq-gA4" id="6HA-U6-UHI"/>
                                 </connections>

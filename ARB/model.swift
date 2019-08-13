@@ -10,6 +10,7 @@ import Foundation
 
 struct roomList : Decodable {
     var roomName: String
+    var roomName2: String
     var workType: String
     var workName: String
     var summPlan: Double
@@ -19,6 +20,7 @@ struct roomList : Decodable {
     
     init (json: [String:Any]) {
         roomName = json["roomName"] as? String ?? ""
+        roomName2 = json["roomName2"] as? String ?? ""
         workName = json["workName"] as? String ?? ""
         workType = json["workType"] as? String ?? ""
         summPlan = json["summPlan"] as? Double ?? 0.0
