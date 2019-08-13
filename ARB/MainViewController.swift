@@ -40,28 +40,13 @@ class MainViewController: UIViewController {
         percentView.layer.masksToBounds = true
         
         
-//    getDataRoomList(jsonUrlString: "http://89.223.26.123:7777") {
-//        self.sumPlan.text = separatedNumber(rooms[0].summPlan) + " р"
-//        self.sumFact.text = separatedNumber(rooms[0].summFact) + " р"
-//        self.percent.text = separatedNumber(rooms[0].recent) + " %"
-//        if rooms[0].budget < 0 { self.budget.textColor = UIColor.cyan} else { self.budget.textColor = UIColor.red }
-//        self.budget.text = separatedNumber(rooms[0].budget) + " р"
-//    }
         getDataRoomList(jsonUrlString: "http://89.223.26.123:7777") {
-//            print(rooms[0].summPlan)
             self.sumPlan.text = separatedNumber(rooms[0].summPlan) + " р"
             self.sumFact.text = separatedNumber(rooms[0].summFact) + " р"
             self.percent.text = separatedNumber(rooms[0].recent) + " %"
             if rooms[0].budget < 0 { self.budget.textColor = UIColor.cyan} else { self.budget.textColor = UIColor.red }
             self.budget.text = separatedNumber(rooms[0].budget) + " р"
         }
-//        getDataRooms3(jsonUrlString: "http://89.223.26.123:7777") {
-//            self.sumPlan.text = separatedNumber(rooms[0].summPlan) + " р"
-//            self.sumFact.text = separatedNumber(rooms[0].summFact) + " р"
-//            self.percent.text = separatedNumber(rooms[0].recent) + " %"
-//            if rooms[0].budget < 0 { self.budget.textColor = UIColor.cyan} else { self.budget.textColor = UIColor.red }
-//            self.budget.text = separatedNumber(rooms[0].budget) + " р"
-//        }
     }
     
     
@@ -74,13 +59,11 @@ class MainViewController: UIViewController {
         if segue.identifier == "showRooms" {
          let controller = (segue.destination as! ListFirstLevelView)
             controller.dataLevel = 1
-//            controller.title = "Список комнат"
         }
         
         if segue.identifier == "showWorks" {
             let controller = (segue.destination as! ListFirstLevelView)
             controller.dataLevel = 3
-          
         }
     }
    
