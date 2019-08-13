@@ -1,24 +1,275 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13122.16" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="biZ-tk-mcP">
+    <device id="retina5_9" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.12"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
-        <scene sceneID="tne-QT-ifu">
+        <!--Main View Controller-->
+        <scene sceneID="36u-r5-U6I">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                <viewController id="AoX-bA-6dm" customClass="MainViewController" customModule="ARB" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="wAh-SJ-5GG">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Okl-2V-7U3">
+                                <rect key="frame" x="24" y="738" width="133" height="38"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="21"/>
+                                <size key="titleShadowOffset" width="8" height="2"/>
+                                <state key="normal" title="Список работ"/>
+                                <connections>
+                                    <segue destination="cuT-iv-IvD" kind="show" identifier="showWorks" id="R4M-Z5-8J2"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0Fu-ah-05n">
+                                <rect key="frame" x="213" y="738" width="146" height="38"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="21"/>
+                                <size key="titleShadowOffset" width="8" height="2"/>
+                                <state key="normal" title="Список комнат"/>
+                                <connections>
+                                    <segue destination="cuT-iv-IvD" kind="show" identifier="showRooms" id="nRH-Zx-WBW"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Квартира" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xSb-aD-ZKL">
+                                <rect key="frame" x="134" y="113" width="143" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="143" id="Ccw-aR-qt2"/>
+                                    <constraint firstAttribute="height" constant="40" id="VSN-zv-lgM"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="33"/>
+                                <color key="textColor" red="0.34418059220000002" green="0.24213109190000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DMU-H8-WA3">
+                                <rect key="frame" x="18" y="165" width="160" height="130"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="План" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VN0-Ua-49k">
+                                        <rect key="frame" x="0.0" y="8" width="160" height="39"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" red="0.34418059223331043" green="0.24213109193833371" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="26"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="0р" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0bO-8z-7kN">
+                                        <rect key="frame" x="0.0" y="71" width="160" height="34"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" red="0.3409481942653656" green="0.23921084403991699" blue="0.96083992719650269" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" red="0.3409481942653656" green="0.23921084403991699" blue="0.96083992719650269" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gKO-x1-09T">
+                                <rect key="frame" x="197" y="165" width="160" height="130"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Факт" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e6G-gs-FuF">
+                                        <rect key="frame" x="0.0" y="8" width="160" height="32"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" red="0.3409481942653656" green="0.23921084403991699" blue="0.96083992719650269" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="26"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="0р" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gM1-Ll-hta">
+                                        <rect key="frame" x="0.0" y="67" width="160" height="42"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" red="0.3409481942653656" green="0.23921084403991699" blue="0.96083992719650269" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" red="0.3409481942653656" green="0.23921084403991699" blue="0.96083992719650269" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pPX-9T-TM6">
+                                <rect key="frame" x="18" y="313" width="339" height="130"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="0р" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p5e-vZ-nVk">
+                                        <rect key="frame" x="9" y="62" width="320" height="34"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="28"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Экономия бюджета:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FB2-5x-WkN">
+                                        <rect key="frame" x="49" y="8" width="240" height="32"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="26"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" red="0.3409481942653656" green="0.23921084403991699" blue="0.96083992719650269" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vu3-pg-nHD">
+                                <rect key="frame" x="18" y="461" width="339" height="130"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="% исполнения" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wlY-xB-GfQ">
+                                        <rect key="frame" x="86" y="8" width="167" height="32"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="26"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="0%" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="whX-5E-Ptg">
+                                        <rect key="frame" x="11" y="61" width="320" height="34"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="28"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" red="0.3409481942653656" green="0.23921084403991699" blue="0.96083992719650269" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="vu3-pg-nHD" firstAttribute="top" secondItem="pPX-9T-TM6" secondAttribute="bottom" constant="18" id="2tn-UD-es7"/>
+                            <constraint firstItem="DMU-H8-WA3" firstAttribute="leading" secondItem="pPX-9T-TM6" secondAttribute="leading" id="4Mv-fh-mnn"/>
+                            <constraint firstAttribute="bottom" secondItem="vu3-pg-nHD" secondAttribute="bottom" constant="221" id="9PB-pv-iy4"/>
+                            <constraint firstItem="xSb-aD-ZKL" firstAttribute="leading" secondItem="Xyq-pd-Edf" secondAttribute="leading" constant="134" id="Air-2k-4kj"/>
+                            <constraint firstItem="DMU-H8-WA3" firstAttribute="top" secondItem="gKO-x1-09T" secondAttribute="top" id="Hn8-75-gL8"/>
+                            <constraint firstItem="gKO-x1-09T" firstAttribute="leading" secondItem="DMU-H8-WA3" secondAttribute="trailing" constant="19" id="MV0-Ov-QDB"/>
+                            <constraint firstItem="vu3-pg-nHD" firstAttribute="trailing" secondItem="pPX-9T-TM6" secondAttribute="trailing" id="Nzk-7z-mxL"/>
+                            <constraint firstItem="DMU-H8-WA3" firstAttribute="leading" secondItem="Xyq-pd-Edf" secondAttribute="leading" constant="18" id="OhK-UL-Sld"/>
+                            <constraint firstAttribute="bottom" secondItem="DMU-H8-WA3" secondAttribute="bottom" constant="517" id="Rdb-pR-iDS"/>
+                            <constraint firstItem="DMU-H8-WA3" firstAttribute="bottom" secondItem="gKO-x1-09T" secondAttribute="bottom" id="ca8-HI-KgH"/>
+                            <constraint firstItem="DMU-H8-WA3" firstAttribute="top" secondItem="xSb-aD-ZKL" secondAttribute="bottom" constant="12" id="dW2-aW-bTk"/>
+                            <constraint firstItem="xSb-aD-ZKL" firstAttribute="top" secondItem="Xyq-pd-Edf" secondAttribute="top" constant="25" id="fok-pd-bqd"/>
+                            <constraint firstItem="vu3-pg-nHD" firstAttribute="trailing" secondItem="gKO-x1-09T" secondAttribute="trailing" id="kXE-bZ-fr7"/>
+                            <constraint firstItem="vu3-pg-nHD" firstAttribute="centerX" secondItem="wAh-SJ-5GG" secondAttribute="centerX" id="kju-X3-fFN"/>
+                            <constraint firstItem="vu3-pg-nHD" firstAttribute="top" secondItem="wAh-SJ-5GG" secondAttribute="top" constant="461" id="pKP-OR-yYn"/>
+                            <constraint firstItem="DMU-H8-WA3" firstAttribute="leading" secondItem="vu3-pg-nHD" secondAttribute="leading" id="pih-eN-biH"/>
+                            <constraint firstAttribute="trailing" secondItem="DMU-H8-WA3" secondAttribute="trailing" constant="197" id="wX9-68-JhZ"/>
+                            <constraint firstItem="pPX-9T-TM6" firstAttribute="top" secondItem="DMU-H8-WA3" secondAttribute="bottom" constant="18" id="yLf-Ge-UAU"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Xyq-pd-Edf"/>
                     </view>
+                    <navigationItem key="navigationItem" id="jX8-GW-MQ1"/>
+                    <connections>
+                        <outlet property="budget" destination="p5e-vZ-nVk" id="I4I-tt-qIZ"/>
+                        <outlet property="budgetView" destination="pPX-9T-TM6" id="DGc-Rq-gFD"/>
+                        <outlet property="factView" destination="gKO-x1-09T" id="gEa-l9-Xpu"/>
+                        <outlet property="percent" destination="whX-5E-Ptg" id="Fre-r1-Xud"/>
+                        <outlet property="percentView" destination="vu3-pg-nHD" id="GhN-EY-HFT"/>
+                        <outlet property="planView" destination="DMU-H8-WA3" id="S7T-Vx-PMQ"/>
+                        <outlet property="sumFact" destination="gM1-Ll-hta" id="oVS-OU-fFe"/>
+                        <outlet property="sumPlan" destination="0bO-8z-7kN" id="kBB-ho-V8k"/>
+                    </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="pof-D5-PPP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="-391.19999999999999" y="616.99507389162568"/>
+        </scene>
+        <!--Title-->
+        <scene sceneID="Hba-Lz-gWS">
+            <objects>
+                <tableViewController id="cuT-iv-IvD" customClass="ListFirstLevelView" customModule="ARB" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleAspectFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="94" sectionHeaderHeight="28" sectionFooterHeight="28" id="DLV-fh-u01">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleAspectFit" preservesSuperviewLayoutMargins="YES" selectionStyle="gray" indentationWidth="10" reuseIdentifier="cell" rowHeight="94" id="4d9-8I-jBo" customClass="myCell" customModule="ARB" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="375" height="94"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" contentMode="scaleAspectFill" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="4d9-8I-jBo" id="WE5-S1-CcP">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="93.666666666666671"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Room" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lFr-Ob-gD4">
+                                            <rect key="frame" x="16" y="11" width="234" height="21"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="19"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="sumPlan" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="agq-eq-gA4">
+                                            <rect key="frame" x="16" y="56" width="134" height="21"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="sumFact" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yFk-vG-mdj">
+                                            <rect key="frame" x="142" y="56" width="155" height="21"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="sumPlan" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SLb-wG-wzD">
+                                            <rect key="frame" x="89" y="8" width="279" height="21"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="25"/>
+                                            <color key="textColor" red="0.34094819430000001" green="0.23921084400000001" blue="0.9608399272" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="%" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iqK-FI-v9s">
+                                            <rect key="frame" x="275" y="56" width="100" height="21"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="29"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </tableViewCellContentView>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <connections>
+                                    <outlet property="budget" destination="SLb-wG-wzD" id="VeO-GL-a7Y"/>
+                                    <outlet property="percent" destination="iqK-FI-v9s" id="u15-tc-l0A"/>
+                                    <outlet property="roomName" destination="lFr-Ob-gD4" id="3x7-X5-1N5"/>
+                                    <outlet property="summFact" destination="yFk-vG-mdj" id="JBm-J4-jHJ"/>
+                                    <outlet property="summPlan" destination="agq-eq-gA4" id="6HA-U6-UHI"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="cuT-iv-IvD" id="pXU-nX-6da"/>
+                            <outlet property="delegate" destination="cuT-iv-IvD" id="P2K-1c-r1v"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Title" id="ceo-ga-3Fk">
+                        <barButtonItem key="backBarButtonItem" title="Назад" id="ysS-5r-skV"/>
+                    </navigationItem>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="s5y-uD-sRL" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="392.80000000000001" y="616.25615763546796"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="X82-e4-iw1">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="biZ-tk-mcP" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="fO6-8j-VIJ">
+                        <rect key="frame" x="0.0" y="44" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="AoX-bA-6dm" kind="relationship" relationship="rootViewController" id="AUq-WT-L0t"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3AO-Hi-FFV" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1333.5999999999999" y="616.99507389162568"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="R4M-Z5-8J2"/>
+    </inferredMetricsTieBreakers>
 </document>
