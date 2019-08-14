@@ -18,18 +18,16 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Квартира" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xSb-aD-ZKL">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Квартира" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xSb-aD-ZKL">
                                 <rect key="frame" x="116" y="104" width="143" height="40"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="143" id="Ccw-aR-qt2"/>
-                                    <constraint firstAttribute="height" constant="40" id="VSN-zv-lgM"/>
-                                </constraints>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="33"/>
                                 <color key="textColor" red="0.34418059220000002" green="0.24213109190000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DMU-H8-WA3">
-                                <rect key="frame" x="18" y="121" width="160" height="174"/>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DMU-H8-WA3">
+                                <rect key="frame" x="18" y="165" width="160" height="130"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="План" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VN0-Ua-49k">
                                         <rect key="frame" x="8" y="8" width="144" height="39"/>
@@ -48,8 +46,9 @@
                                 </subviews>
                                 <color key="backgroundColor" red="0.1177913372343195" green="0.82481370650913954" blue="0.96083992719650269" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gKO-x1-09T">
-                                <rect key="frame" x="197" y="121" width="160" height="174"/>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gKO-x1-09T">
+                                <rect key="frame" x="197" y="165" width="160" height="130"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Факт" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e6G-gs-FuF">
                                         <rect key="frame" x="8" y="8" width="144" height="32"/>
@@ -68,8 +67,9 @@
                                 </subviews>
                                 <color key="backgroundColor" red="0.37850603461265564" green="0.8281288743019104" blue="0.96080666780471802" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pPX-9T-TM6">
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pPX-9T-TM6">
                                 <rect key="frame" x="18" y="313" width="339" height="130"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="0р" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p5e-vZ-nVk">
                                         <rect key="frame" x="9" y="62" width="320" height="34"/>
@@ -88,8 +88,9 @@
                                 </subviews>
                                 <color key="backgroundColor" red="0.3409481942653656" green="0.23921084403991699" blue="0.96083992719650269" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vu3-pg-nHD">
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vu3-pg-nHD">
                                 <rect key="frame" x="18" y="461" width="339" height="130"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="% исполнения" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wlY-xB-GfQ">
                                         <rect key="frame" x="86" y="8" width="167" height="32"/>
@@ -130,26 +131,6 @@
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <constraints>
-                            <constraint firstItem="vu3-pg-nHD" firstAttribute="top" secondItem="pPX-9T-TM6" secondAttribute="bottom" constant="18" id="2tn-UD-es7"/>
-                            <constraint firstItem="DMU-H8-WA3" firstAttribute="leading" secondItem="pPX-9T-TM6" secondAttribute="leading" id="4Mv-fh-mnn"/>
-                            <constraint firstAttribute="bottom" secondItem="vu3-pg-nHD" secondAttribute="bottom" constant="221" id="9PB-pv-iy4"/>
-                            <constraint firstItem="xSb-aD-ZKL" firstAttribute="leading" secondItem="Xyq-pd-Edf" secondAttribute="leading" constant="134" id="Air-2k-4kj"/>
-                            <constraint firstItem="DMU-H8-WA3" firstAttribute="top" secondItem="gKO-x1-09T" secondAttribute="top" id="Hn8-75-gL8"/>
-                            <constraint firstItem="gKO-x1-09T" firstAttribute="leading" secondItem="DMU-H8-WA3" secondAttribute="trailing" constant="19" id="MV0-Ov-QDB"/>
-                            <constraint firstItem="vu3-pg-nHD" firstAttribute="trailing" secondItem="pPX-9T-TM6" secondAttribute="trailing" id="Nzk-7z-mxL"/>
-                            <constraint firstItem="DMU-H8-WA3" firstAttribute="leading" secondItem="Xyq-pd-Edf" secondAttribute="leading" constant="18" id="OhK-UL-Sld"/>
-                            <constraint firstAttribute="bottom" secondItem="DMU-H8-WA3" secondAttribute="bottom" constant="517" id="Rdb-pR-iDS"/>
-                            <constraint firstItem="DMU-H8-WA3" firstAttribute="bottom" secondItem="gKO-x1-09T" secondAttribute="bottom" id="ca8-HI-KgH"/>
-                            <constraint firstItem="DMU-H8-WA3" firstAttribute="top" secondItem="xSb-aD-ZKL" secondAttribute="bottom" constant="12" id="dW2-aW-bTk"/>
-                            <constraint firstItem="xSb-aD-ZKL" firstAttribute="top" secondItem="Xyq-pd-Edf" secondAttribute="top" constant="25" id="fok-pd-bqd"/>
-                            <constraint firstItem="vu3-pg-nHD" firstAttribute="trailing" secondItem="gKO-x1-09T" secondAttribute="trailing" id="kXE-bZ-fr7"/>
-                            <constraint firstItem="vu3-pg-nHD" firstAttribute="centerX" secondItem="wAh-SJ-5GG" secondAttribute="centerX" id="kju-X3-fFN"/>
-                            <constraint firstItem="vu3-pg-nHD" firstAttribute="top" secondItem="wAh-SJ-5GG" secondAttribute="top" constant="461" id="pKP-OR-yYn"/>
-                            <constraint firstItem="DMU-H8-WA3" firstAttribute="leading" secondItem="vu3-pg-nHD" secondAttribute="leading" id="pih-eN-biH"/>
-                            <constraint firstAttribute="trailing" secondItem="DMU-H8-WA3" secondAttribute="trailing" constant="197" id="wX9-68-JhZ"/>
-                            <constraint firstItem="pPX-9T-TM6" firstAttribute="top" secondItem="DMU-H8-WA3" secondAttribute="bottom" constant="18" id="yLf-Ge-UAU"/>
-                        </constraints>
                         <viewLayoutGuide key="safeArea" id="Xyq-pd-Edf"/>
                     </view>
                     <navigationItem key="navigationItem" id="jX8-GW-MQ1"/>
