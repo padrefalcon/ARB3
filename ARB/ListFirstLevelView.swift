@@ -35,6 +35,7 @@ class myCell: UITableViewCell {
     
     func configureByRoom2(by room: roomList) {
         roomName.text = room.workName
+        roomName2.text = room.workType
         summPlan.text = separatedNumber(room.summPlan) + " p"
         summFact.text = separatedNumber(room.summFact)  + " p"
         percent.text = separatedNumber(room.recent)  + " %"
@@ -88,11 +89,17 @@ class myCell: UITableViewCell {
 class ListFirstLevelView: UITableViewController {
     
     var dataLevel: Int  = 0
+    var dataSubLevel: Int = 0
     override func viewDidLoad() {
         super.viewDidLoad()
         loadData()
        
     }
+    
+//    override func viewDidAppear(_ animated: Bool) {
+//        super.viewDidAppear(true)
+//        loadData()
+//    }
     
     private func loadData() {
         if dataLevel == 1 {
@@ -142,7 +149,9 @@ class ListFirstLevelView: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if (dataLevel == 1) {
             dataLevel = 2
+            dataSubLevel = 1
         let selectedRoomName = rooms[indexPath.row].roomName
+        
         let urlText = "http://89.223.26.123:7777/a/detail?name="
         let escapedRoomName = String( selectedRoomName.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlQueryAllowed)!)
         getDataRoomList(jsonUrlString: "\(urlText)\(escapedRoomName)") {
@@ -150,7 +159,9 @@ class ListFirstLevelView: UITableViewController {
             self.tableView.numberOfRows(inSection: rooms.count)
             self.navigationItem.title = selectedRoomName
             self.tableView.reloadData()
+            print(rooms[indexPath.row].ID)
         }
+            return
         }
         
         if (dataLevel == 3) {
@@ -163,6 +174,16 @@ class ListFirstLevelView: UITableViewController {
                 self.tableView.numberOfRows(inSection: rooms.count)
                 self.navigationItem.title = selectedRoomName
                 self.tableView.reloadData()
+                
+            }
+            return
+        }
+        
+        if (dataSubLevel == 1) {
+            let selectedRoomID = String(rooms[indexPath.row].ID)
+            let urlText = "http://89.223.26.123:7777/a/detail?id=\(selectedRoomID)"
+            getDataRoomDetail(jsonUrlString: "\(urlText)") {
+            self.performSegue(withIdentifier: "showDetailVC", sender: self)
             }
         }
         

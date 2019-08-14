@@ -22,22 +22,29 @@ class MainViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        let shadowPath = UIBezierPath(rect: planView.bounds)
-//        planView.layer.masksToBounds = false
-//        planView.layer.shadowColor = UIColor.black.cgColor
-//        planView.layer.shadowOffset = CGSize(width: 0, height: 0.5)
-//        planView.layer.shadowOpacity = 0.2
-//        planView.layer.shadowPath = shadowPath.cgPath
-//
-        planView.layer.cornerRadius = 9
-        planView.layer.masksToBounds = true
-        
-        factView.layer.cornerRadius = 9
-        factView.layer.masksToBounds = true
-        budgetView.layer.cornerRadius = 9
-        budgetView.layer.masksToBounds = true
-        percentView.layer.cornerRadius = 9
-        percentView.layer.masksToBounds = true
+        planView.layer.shadowColor = UIColor.black.cgColor
+        planView.layer.shadowOffset = CGSize(width: 1, height: 1)
+        planView.layer.shadowRadius = 7
+        planView.layer.cornerRadius = 20
+        planView.layer.shadowOpacity = 0.5
+
+        factView.layer.shadowColor = UIColor.black.cgColor
+        factView.layer.shadowOffset = CGSize(width: 1, height: 1)
+        factView.layer.shadowRadius = 7
+        factView.layer.cornerRadius = 20
+        factView.layer.shadowOpacity = 0.5
+
+        budgetView.layer.shadowColor = UIColor.black.cgColor
+        budgetView.layer.shadowOffset = CGSize(width: 1, height: 1)
+        budgetView.layer.shadowRadius = 7
+        budgetView.layer.cornerRadius = 20
+        budgetView.layer.shadowOpacity = 0.7
+     
+        percentView.layer.shadowColor = UIColor.black.cgColor
+        percentView.layer.shadowOffset = CGSize(width: 1, height: 1)
+        percentView.layer.shadowRadius = 7
+        percentView.layer.cornerRadius = 20
+        percentView.layer.shadowOpacity = 0.7
         
         
         getDataRoomList(jsonUrlString: "http://89.223.26.123:7777") {

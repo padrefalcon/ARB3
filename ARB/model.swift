@@ -17,10 +17,12 @@ struct roomList : Decodable {
     var summFact: Double
     var recent: Double
     var budget: Double
+    var ID: Int
     
     init (json: [String:Any]) {
         roomName = json["roomName"] as? String ?? ""
         roomName2 = json["roomName2"] as? String ?? ""
+        ID = json["id"] as? Int ?? 0
         workName = json["workName"] as? String ?? ""
         workType = json["workType"] as? String ?? ""
         summPlan = json["summPlan"] as? Double ?? 0.0
@@ -36,19 +38,31 @@ var urlToData: URL {
 }
 
 var rooms:[roomList] = []
+var savedMess: String = ""
 
-//struct roomDetail {
-//    var id: Int
-//    var roomName: String
-//    var workName: String
-//    var workType: String
-//    var units: String
-//    var values: Double
-//    var priseOne: Double
-//    var summPlan: Double
-//    var summFact: Double
-//    var comment: String
-//}
+
+struct roomDetail {
+    var id: Int
+    var roomName: String
+    var workName: String
+    var workType: String
+    var summPlan: Double
+    var summFact: Double
+    var perc: Double
+    var budget: Double
+    
+    init (json: [String:Any]) {
+        id = json["id"] as? Int ?? 0
+        roomName = json["roomName"] as? String ?? ""
+        workName = json["workName"] as? String ?? ""
+        workType = json["workType"] as? String ?? ""
+        summPlan = json["summPlan"] as? Double ?? 0.0
+        summFact = json["summFact"] as? Double ?? 0.0
+        perc = json["perc"] as? Double ?? 0.0
+        budget = json["budget"] as? Double ?? 0.0
+    }
+}
+var room:[roomDetail] = []
 
 func getDataRoomList(jsonUrlString: String, dataLoaded: @escaping () -> Void) {
     rooms = []
@@ -86,6 +100,79 @@ func getDataRoomList(jsonUrlString: String, dataLoaded: @escaping () -> Void) {
     }
     downloadTask.resume()
     
+}
+
+func getDataRoomDetail(jsonUrlString: String, dataLoaded: @escaping () -> Void) {
+    room = []
+    var returnArray:[roomDetail] = []
+    
+    guard let url = URL(string: jsonUrlString) else { return }
+    
+    let downloadTask = URLSession.shared.dataTask(with: url) {
+        (datafs, response, error) in
+        
+        guard let data = datafs else { return}
+        
+        
+        do {
+            guard let jsonData = try JSONSerialization.jsonObject(with: data, options: .allowFragments) as? [String: Any] else { return }
+            
+            if let array = jsonData["databin"] as? [[String: Any]]
+            {
+                for dic in array
+                {
+                    let newRoom = roomDetail(json: dic)
+                    returnArray.append(newRoom)
+                }
+                //print(returnArray)
+                room = returnArray
+                DispatchQueue.main.async {
+                    dataLoaded()
+                }
+                
+                
+            }
+        } catch let jsonErr {
+            print(jsonErr)
+        }
+    }
+    downloadTask.resume()
+    
+}
+
+func uploadSaveData(jsonUrlString: String, dataLoaded: @escaping () -> Void) {
+    
+    guard let url = URL(string: jsonUrlString) else { return }
+    
+    let downloadTask = URLSession.shared.dataTask(with: url) {
+        (datafs, response, error) in
+        print(error)
+        
+        guard let data = datafs else { return}
+        
+        do {
+            guard let jsonData = try JSONSerialization.jsonObject(with: data, options: .allowFragments) as? [String: Any] else { return }
+            
+            if let array = jsonData["databin"] as? [[String: Any]]
+            {
+//                print(array)
+                for dic in array
+                {
+                    savedMess = (dic["message"] as? String)!
+//                    print(dic["message"])
+//                    returnArray.append(newRoom)
+                }
+                //print(returnArray)
+//                room = returnArray
+                DispatchQueue.main.async {
+                    dataLoaded()
+                }
+            }
+        } catch let jsonErr {
+            print(jsonErr)
+        }
+    }
+    downloadTask.resume()
 }
 
 
