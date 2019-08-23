@@ -11,6 +11,8 @@
 		AE1EE5D222FB14A8002A1CF9 /* model.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE1EE5D122FB14A8002A1CF9 /* model.swift */; };
 		AE63DFE622FD2D3600691EEA /* myUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE63DFE522FD2D3600691EEA /* myUtil.swift */; };
 		AE63DFE822FD3EB100691EEA /* ListFirstLevelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE63DFE722FD3EB100691EEA /* ListFirstLevelView.swift */; };
+		AE8AB5B9230BF63C00632915 /* PayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE8AB5B8230BF63C00632915 /* PayView.swift */; };
+		AE8AB5BB230D376B00632915 /* AddPayVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE8AB5BA230D376B00632915 /* AddPayVC.swift */; };
 		AE9E24CC2303E48C00567A7A /* DetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE9E24CB2303E48C00567A7A /* DetailVC.swift */; };
 		AED8DB7622FB0E86001274BA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AED8DB7522FB0E86001274BA /* AppDelegate.swift */; };
 		AED8DB7B22FB0E86001274BA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AED8DB7922FB0E86001274BA /* Main.storyboard */; };
@@ -23,6 +25,8 @@
 		AE1EE5D122FB14A8002A1CF9 /* model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = model.swift; sourceTree = "<group>"; };
 		AE63DFE522FD2D3600691EEA /* myUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = myUtil.swift; sourceTree = "<group>"; };
 		AE63DFE722FD3EB100691EEA /* ListFirstLevelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListFirstLevelView.swift; sourceTree = "<group>"; };
+		AE8AB5B8230BF63C00632915 /* PayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PayView.swift; sourceTree = "<group>"; };
+		AE8AB5BA230D376B00632915 /* AddPayVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPayVC.swift; sourceTree = "<group>"; };
 		AE9E24CB2303E48C00567A7A /* DetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailVC.swift; sourceTree = "<group>"; };
 		AED8DB7222FB0E86001274BA /* ARB.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ARB.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AED8DB7522FB0E86001274BA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -66,6 +70,8 @@
 				AED8DB7522FB0E86001274BA /* AppDelegate.swift */,
 				AED8DB7922FB0E86001274BA /* Main.storyboard */,
 				AE63DFE722FD3EB100691EEA /* ListFirstLevelView.swift */,
+				AE8AB5B8230BF63C00632915 /* PayView.swift */,
+				AE8AB5BA230D376B00632915 /* AddPayVC.swift */,
 				AE63DFE522FD2D3600691EEA /* myUtil.swift */,
 				AE9E24CB2303E48C00567A7A /* DetailVC.swift */,
 				AED8DB7C22FB0E87001274BA /* Assets.xcassets */,
@@ -147,10 +153,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AE8AB5B9230BF63C00632915 /* PayView.swift in Sources */,
 				AE18788E22FC1E49001F2394 /* MainViewController.swift in Sources */,
 				AED8DB7622FB0E86001274BA /* AppDelegate.swift in Sources */,
 				AE1EE5D222FB14A8002A1CF9 /* model.swift in Sources */,
 				AE63DFE622FD2D3600691EEA /* myUtil.swift in Sources */,
+				AE8AB5BB230D376B00632915 /* AddPayVC.swift in Sources */,
 				AE63DFE822FD3EB100691EEA /* ListFirstLevelView.swift in Sources */,
 				AE9E24CC2303E48C00567A7A /* DetailVC.swift in Sources */,
 			);

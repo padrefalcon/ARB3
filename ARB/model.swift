@@ -18,6 +18,9 @@ struct roomList : Decodable {
     var recent: Double
     var budget: Double
     var ID: Int
+    var units: String
+    var unitValue: Double
+    var priseOne: Double
     
     init (json: [String:Any]) {
         roomName = json["roomName"] as? String ?? ""
@@ -28,9 +31,50 @@ struct roomList : Decodable {
         summPlan = json["summPlan"] as? Double ?? 0.0
         summFact = json["summFact"] as? Double ?? 0.0
         recent = json["recent"] as? Double ?? 0.0
-        budget = json["budget"] as? Double ?? 0.0
+//        budget = json["budget"] as? Double ?? 0.0
+        budget = summFact - summPlan
+        units = json["units"] as? String ?? ""
+        unitValue = json["values"] as? Double ?? 0.0
+        priseOne = json["priseOne"] as? Double ?? 0.0
     }
 }
+
+struct payAll {
+    var name: String
+    var summ: Double
+    
+    init (json: [String:Any]) {
+        name = json["user"] as? String ?? ""
+        summ = json["summ"] as? Double ?? 0.0
+    }
+}
+
+struct pay {
+    var idpay: Int
+    var date: String
+    var user: String
+    var type: String
+    var summ: Double
+    var comment: String
+    
+    init (json: [String:Any]) {
+        idpay = json["idpay"] as? Int ?? 0
+//        let datestr = json["date"] as? String ?? ""
+//        let upperBound = datestr.index(datestr.startIndex, offsetBy: 10, limitedBy: datestr.endIndex) ?? datestr.endIndex
+//        date = String(datestr[..<upperBound])
+        var datestr = json["date"] as? String ?? ""
+        let dateLocal = UTCToLocal(date: datestr)
+        date = dateLocal
+        user = json["user"] as? String ?? ""
+        type = json["type"] as? String ?? ""
+        summ = json["summ"] as? Double ?? 0.0
+        comment = json["comment"] as? String ?? ""
+    }
+}
+
+var pays:[pay] = []
+var paysAll:[payAll] = []
+
 var urlToData: URL {
     let path = NSSearchPathForDirectoriesInDomains(.libraryDirectory, .userDomainMask, true)[0] + "/data.json"
     let urlPath = URL (fileURLWithPath: path)
@@ -50,6 +94,9 @@ struct roomDetail {
     var summFact: Double
     var perc: Double
     var budget: Double
+    var units: String
+    var unitValue: Double
+    var priseOne: Double
     
     init (json: [String:Any]) {
         id = json["id"] as? Int ?? 0
@@ -59,7 +106,11 @@ struct roomDetail {
         summPlan = json["summPlan"] as? Double ?? 0.0
         summFact = json["summFact"] as? Double ?? 0.0
         perc = json["perc"] as? Double ?? 0.0
-        budget = json["budget"] as? Double ?? 0.0
+//        budget = json["budget"] as? Double ?? 0.0
+        budget = summFact - summPlan
+        units = json["units"] as? String ?? ""
+        unitValue = json["values"] as? Double ?? 0.0
+        priseOne = json["priseOne"] as? Double ?? 0.0
     }
 }
 var room:[roomDetail] = []
@@ -75,7 +126,6 @@ func getDataRoomList(jsonUrlString: String, dataLoaded: @escaping () -> Void) {
         
         guard let data = datafs else { return}
 
-        
         do {
             guard let jsonData = try JSONSerialization.jsonObject(with: data, options: .allowFragments) as? [String: Any] else { return }
 
@@ -86,20 +136,81 @@ func getDataRoomList(jsonUrlString: String, dataLoaded: @escaping () -> Void) {
                     let newRoom = roomList(json: dic)
                     returnArray.append(newRoom)
                 }
-//print(returnArray)
                 rooms = returnArray
                 DispatchQueue.main.async {
                     dataLoaded()
                 }
-                
-                
             }
         } catch let jsonErr {
             print(jsonErr)
         }
     }
     downloadTask.resume()
+}
+func getDataPayAll(jsonUrlString: String, dataLoaded: @escaping () -> Void) {
+    paysAll = []
+    var returnArray:[payAll] = []
     
+    guard let url = URL(string: jsonUrlString) else { return }
+    
+    let downloadTask = URLSession.shared.dataTask(with: url) {
+        (datafs, response, error) in
+        
+        guard let data = datafs else { return}
+        
+        do {
+            guard let jsonData = try JSONSerialization.jsonObject(with: data, options: .allowFragments) as? [String: Any] else { return }
+            
+            if let array = jsonData["databin"] as? [[String: Any]]
+            {
+                for dic in array
+                {
+                    let newRoom = payAll(json: dic)
+                    returnArray.append(newRoom)
+                }
+                paysAll = returnArray
+                DispatchQueue.main.async {
+                    dataLoaded()
+                }
+            }
+        } catch let jsonErr {
+            print(jsonErr)
+        }
+    }
+    downloadTask.resume()
+}
+
+func getDataPay(jsonUrlString: String, dataLoaded: @escaping () -> Void) {
+    pays = []
+    var returnArray:[pay] = []
+    
+    guard let url = URL(string: jsonUrlString) else { return }
+    
+    let downloadTask = URLSession.shared.dataTask(with: url) {
+        (datafs, response, error) in
+        
+        guard let data = datafs else { return}
+        
+        do {
+            guard let jsonData = try JSONSerialization.jsonObject(with: data, options: .allowFragments) as? [String: Any] else { return }
+            
+            if let array = jsonData["databin"] as? [[String: Any]]
+            {
+                for dic in array
+                {
+                    let newRoom = pay(json: dic)
+                    returnArray.append(newRoom)
+                }
+                pays = returnArray
+                DispatchQueue.main.async {
+                    dataLoaded()
+                }
+            }
+        } catch let jsonErr {
+            print(jsonErr)
+        }
+    }
+    downloadTask.resume()
 }
 
 func getDataRoomDetail(jsonUrlString: String, dataLoaded: @escaping () -> Void) {
@@ -129,8 +240,6 @@ func getDataRoomDetail(jsonUrlString: String, dataLoaded: @escaping () -> Void) 
                 DispatchQueue.main.async {
                     dataLoaded()
                 }
-                
-                
             }
         } catch let jsonErr {
             print(jsonErr)
@@ -142,11 +251,12 @@ func getDataRoomDetail(jsonUrlString: String, dataLoaded: @escaping () -> Void) 
 
 func uploadSaveData(jsonUrlString: String, dataLoaded: @escaping () -> Void) {
     
-    guard let url = URL(string: jsonUrlString) else { return }
+//    guard let url = URL(string: jsonUrlString) else { return }
+    let url = URL(string: jsonUrlString)
     
-    let downloadTask = URLSession.shared.dataTask(with: url) {
+    let downloadTask = URLSession.shared.dataTask(with: url!) {
         (datafs, response, error) in
-        print(error)
+        //print(error)
         
         guard let data = datafs else { return}
         
@@ -164,6 +274,40 @@ func uploadSaveData(jsonUrlString: String, dataLoaded: @escaping () -> Void) {
                 }
                 //print(returnArray)
 //                room = returnArray
+                DispatchQueue.main.async {
+                    dataLoaded()
+                }
+            }
+        } catch let jsonErr {
+            print(jsonErr)
+        }
+    }
+    downloadTask.resume()
+}
+func deletePay(jsonUrlString: String, dataLoaded: @escaping () -> Void) {
+    
+        guard let url = URL(string: jsonUrlString) else { return }
+    
+    let downloadTask = URLSession.shared.dataTask(with: url) {
+        (datafs, response, error) in
+        //print(error)
+        
+        guard let data = datafs else { return}
+        
+        do {
+            guard let jsonData = try JSONSerialization.jsonObject(with: data, options: .allowFragments) as? [String: Any] else { return }
+            
+            if let array = jsonData["databin"] as? [[String: Any]]
+            {
+                //                print(array)
+                for dic in array
+                {
+                    savedMess = (dic["message"] as? String)!
+                    //                    print(dic["message"])
+                    //                    returnArray.append(newRoom)
+                }
+                //print(returnArray)
+                //                room = returnArray
                 DispatchQueue.main.async {
                     dataLoaded()
                 }

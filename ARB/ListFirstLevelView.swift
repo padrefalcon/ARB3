@@ -19,9 +19,15 @@ class myCell: UITableViewCell {
     
     func configureByRoom(by room: roomList) {
         roomName.text = room.roomName
-        summPlan.text = separatedNumber(room.summPlan) + " p"
-        summFact.text = separatedNumber(room.summFact)  + " p"
-        percent.text = separatedNumber(room.recent)  + " %"
+        summPlan.text = separatedNumber(room.summPlan)// + " p"
+        summFact.text = separatedNumber(room.summFact) // + " p"
+        if (room.summPlan > 0) && (room.summFact > 0) {
+            let prc = room.summFact / room.summPlan * 100
+            percent.text = separatedNumber(prc)  + " %"
+        } else {
+            percent.text = "0 %"
+        }
+        
         let economy = room.budget ?? 0
         if economy > 0 {
             budget.textColor = .red
@@ -30,15 +36,20 @@ class myCell: UITableViewCell {
         } else {
             budget.textColor = .blue
         }
-        budget.text = separatedNumber(room.budget) + "p"
+        budget.text = separatedNumber(room.budget) //+ "p"
     }
     
     func configureByRoom2(by room: roomList) {
         roomName.text = room.workName
         roomName2.text = room.workType
-        summPlan.text = separatedNumber(room.summPlan) + " p"
-        summFact.text = separatedNumber(room.summFact)  + " p"
-        percent.text = separatedNumber(room.recent)  + " %"
+        summPlan.text = separatedNumber(room.summPlan)// + " p"
+        summFact.text = separatedNumber(room.summFact) // + " p"
+        if (room.summPlan > 0) && (room.summFact > 0) {
+            let prc = room.summFact / room.summPlan * 100
+            percent.text = separatedNumber(prc)  + " %"
+        } else {
+            percent.text = "0 %"
+        }
         let economy = room.budget ?? 0
         if economy > 0 {
             budget.textColor = .red
@@ -47,14 +58,20 @@ class myCell: UITableViewCell {
         } else {
             budget.textColor = .blue
         }
-        budget.text = separatedNumber(room.budget) + "p"
+        budget.text = separatedNumber(room.budget)// + "p"
+        
     }
     
     func configureByWork(by room: roomList) {
         roomName.text = room.workType
-        summPlan.text = separatedNumber(room.summPlan) + " p"
-        summFact.text = separatedNumber(room.summFact)  + " p"
-        percent.text = separatedNumber(room.recent)  + " %"
+        summPlan.text = separatedNumber(room.summPlan)// + " p"
+        summFact.text = separatedNumber(room.summFact)//  + " p"
+        if (room.summPlan > 0) && (room.summFact > 0) {
+            let prc = room.summFact / room.summPlan * 100
+            percent.text = separatedNumber(prc)  + " %"
+        } else {
+            percent.text = "0 %"
+        }
         let economy = room.budget ?? 0
         if economy > 0 {
             budget.textColor = .red
@@ -63,15 +80,20 @@ class myCell: UITableViewCell {
         } else {
             budget.textColor = .blue
         }
-        budget.text = separatedNumber(room.budget) + "p"
+        budget.text = separatedNumber(room.budget)// + "p"
     }
     
     func configureByWork2(by room: roomList) {
         roomName.text = room.workName //+ room.roomName
         roomName2.text = room.roomName2
-        summPlan.text = separatedNumber(room.summPlan) + " p"
-        summFact.text = separatedNumber(room.summFact)  + " p"
-        percent.text = separatedNumber(room.recent)  + " %"
+        summPlan.text = separatedNumber(room.summPlan) //+ " p"
+        summFact.text = separatedNumber(room.summFact) // + " p"
+        if (room.summPlan > 0) && (room.summFact > 0) {
+            let prc = room.summFact / room.summPlan * 100
+            percent.text = separatedNumber(prc)  + " %"
+        } else {
+            percent.text = "0 %"
+        }
         let economy = room.budget ?? 0
         if economy > 0 {
             budget.textColor = .red
@@ -80,7 +102,7 @@ class myCell: UITableViewCell {
         } else {
             budget.textColor = .blue
         }
-        budget.text = separatedNumber(room.budget) + "p"
+        budget.text = separatedNumber(room.budget) //+ "p"
     }
     
     
@@ -155,17 +177,18 @@ class ListFirstLevelView: UITableViewController {
         let urlText = "http://89.223.26.123:7777/a/detail?name="
         let escapedRoomName = String( selectedRoomName.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlQueryAllowed)!)
         getDataRoomList(jsonUrlString: "\(urlText)\(escapedRoomName)") {
-            //print(rooms)
+            
             self.tableView.numberOfRows(inSection: rooms.count)
             self.navigationItem.title = selectedRoomName
             self.tableView.reloadData()
-            print(rooms[indexPath.row].ID)
+            
         }
             return
         }
         
         if (dataLevel == 3) {
             dataLevel = 4
+            dataSubLevel = 1
             let selectedRoomName = rooms[indexPath.row].workType
             let urlText = "http://89.223.26.123:7777/w/detail?name="
             let escapedRoomName = String( selectedRoomName.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlQueryAllowed)!)
