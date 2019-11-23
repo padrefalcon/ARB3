@@ -55,6 +55,29 @@ struct pay {
     var user: String
     var type: String
     var summ: Double
+    var comments: [String] = []
+    
+    init (json: [String:Any]) {
+        idpay = json["idpay"] as? Int ?? 0
+//        let datestr = json["date"] as? String ?? ""
+//        let upperBound = datestr.index(datestr.startIndex, offsetBy: 10, limitedBy: datestr.endIndex) ?? datestr.endIndex
+//        date = String(datestr[..<upperBound])
+        var datestr = json["date"] as? String ?? "2019-10-09T21:00:00.000Z"
+        let dateLocal = UTCToLocal(date: datestr)
+        date = dateLocal
+        user = json["user"] as? String ?? ""
+        type = json["type"] as? String ?? ""
+        summ = json["summ"] as? Double ?? 0.0
+        comments = [json["comment"] as? String ?? ""]
+    }
+}
+
+struct pay2 {
+    var idpay: Int
+    var date: String
+    var user: String
+    var type: String
+    var summ: Double
     var comment: String
     
     init (json: [String:Any]) {
@@ -63,7 +86,7 @@ struct pay {
 //        let upperBound = datestr.index(datestr.startIndex, offsetBy: 10, limitedBy: datestr.endIndex) ?? datestr.endIndex
 //        date = String(datestr[..<upperBound])
         var datestr = json["date"] as? String ?? ""
-        let dateLocal = UTCToLocal(date: datestr)
+        let dateLocal = ""
         date = dateLocal
         user = json["user"] as? String ?? ""
         type = json["type"] as? String ?? ""
@@ -73,6 +96,7 @@ struct pay {
 }
 
 var pays:[pay] = []
+var pays2:[pay2] = []
 var paysAll:[payAll] = []
 
 var urlToData: URL {
@@ -82,6 +106,7 @@ var urlToData: URL {
 }
 
 var rooms:[roomList] = []
+var rooms2:[roomList] = []
 var savedMess: String = ""
 
 
@@ -202,6 +227,38 @@ func getDataPay(jsonUrlString: String, dataLoaded: @escaping () -> Void) {
                     returnArray.append(newRoom)
                 }
                 pays = returnArray
+                DispatchQueue.main.async {
+                    dataLoaded()
+                }
+            }
+        } catch let jsonErr {
+            print(jsonErr)
+        }
+    }
+    downloadTask.resume()
+}
+func getDataPay2(jsonUrlString: String, dataLoaded: @escaping () -> Void) {
+    pays2 = []
+    var returnArray:[pay2] = []
+    
+    guard let url = URL(string: jsonUrlString) else { return }
+    
+    let downloadTask = URLSession.shared.dataTask(with: url) {
+        (datafs, response, error) in
+        
+        guard let data = datafs else { return}
+        
+        do {
+            guard let jsonData = try JSONSerialization.jsonObject(with: data, options: .allowFragments) as? [String: Any] else { return }
+            
+            if let array = jsonData["databin"] as? [[String: Any]]
+            {
+                for dic in array
+                {
+                    let newRoom = pay2(json: dic)
+                    returnArray.append(newRoom)
+                }
+                pays2 = returnArray
                 DispatchQueue.main.async {
                     dataLoaded()
                 }

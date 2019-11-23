@@ -22,7 +22,8 @@ class MainViewController: UIViewController {
     @IBOutlet weak var payAll: UILabel!
     @IBOutlet weak var fotoDima: UIImageView!
     @IBOutlet weak var fotoLena: UIImageView!
-   
+    @IBOutlet weak var indicator: UIActivityIndicatorView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -48,6 +49,9 @@ class MainViewController: UIViewController {
         
         fotoDima.layer.cornerRadius = 20
         fotoLena.layer.cornerRadius = 20
+        
+        indicator.isHidden = false
+        indicator.startAnimating()
         
         getDataRoomList(jsonUrlString: "http://89.223.26.123:7777") {
             self.sumPlan.text = separatedNumber(rooms[0].summPlan) //+ " р"
@@ -89,12 +93,19 @@ class MainViewController: UIViewController {
             let payAllStr = separatedNumber(a)
             self.payAll.text = payAllStr
             
-            
+          self.indicator.stopAnimating()
+            self.indicator.isHidden = true
         }
     }
     
     override func viewDidAppear(_ animated: Bool) {
+        indicator.isHidden = false
+        indicator.startAnimating()
+        
         viewDidLoad()
+        
+        indicator.isHidden = true
+        indicator.startAnimating()
         
     }
     

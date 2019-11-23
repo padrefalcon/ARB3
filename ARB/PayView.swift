@@ -29,10 +29,42 @@ class payCell :UITableViewCell {
         date.text = pay.date
         summ.text = separatedNumber(pay.summ)
     }
+    
+    func configure2(by pay: pay2) {
+        userImage.layer.cornerRadius = 20
+        
+//        let dimaImg = UIImage(named: "Dima")
+//        let lenaImg = UIImage(named: "Lena")
+//        if (pay.user == "Дима") {
+//            userImage.image = dimaImg
+//        } else {
+//            userImage.image = lenaImg
+//        }
+        type.text = pay.type
+//        comment.text = pay.comment
+//        date.text = pay.date
+        summ.text = separatedNumber(pay.summ)
+    }
 }
 
 class PayView: UITableViewController {
-
+    
+    var payDataSource = [[String]]()
+    
+   
+    
+    
+    @IBOutlet weak var paySortType: UIBarButtonItem!
+    @IBAction func pushSortType(_ sender: Any) {
+        if (paySortType.title == "По дате") {
+            paySortType.title = "По Типу"
+            loadData()
+        } else {
+            paySortType.title = "По дате"
+            loadData()
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 //        loadData()
@@ -50,11 +82,21 @@ class PayView: UITableViewController {
         tableView.reloadData()
     }
     private func loadData() {
-        
-        getDataPay(jsonUrlString: "http://89.223.26.123:7777/p/all" ) {
-        self.navigationItem.title = "Перечнь платежей"
-        self.tableView.reloadData()
+        if (paySortType.title == "По дате") {
+            
+            getDataPay(jsonUrlString: "http://89.223.26.123:7777/p/all" ) {
+                self.navigationItem.title = "Платежи-Дата"
+                self.tableView.reloadData()
             }
+        }
+        
+        if (paySortType.title == "По Типу") {
+            
+            getDataPay(jsonUrlString: "http://89.223.26.123:7777/p/all2" ) {
+                self.navigationItem.title = "Платежи-Тип"
+                self.tableView.reloadData()
+            }
+        }
     }
     // MARK: - Table view data source
 
@@ -64,16 +106,16 @@ class PayView: UITableViewController {
             fullArray.append(type.type)
         }
         let uniqArray = Array(Set(fullArray))
-         print(uniqArray)
+        //         print(uniqArray)
         return uniqArray
-       
+        
     }
 //    // Create a standard header that includes the returned text.
 //    override func tableView(_ tableView: UITableView, titleForHeaderInSection
 //        section: Int) -> String? {
 //        return "Header \(section)"
 //    }
-//    
+//
 //    override func numberOfSections(in tableView: UITableView) -> Int {
 //        // #warning Incomplete implementation, return the number of sections
 //        let a = getUniqPayTypes()
@@ -90,18 +132,18 @@ class PayView: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "payCell", for: indexPath) as! payCell
         
-        let p = pays[indexPath.row]
-        if (p.user == "Дима") {
-            cell.backgroundColor = #colorLiteral(red: 0.8778790236, green: 0.99674505, blue: 0.965611279, alpha: 1)
-        } else {
-            cell.backgroundColor = #colorLiteral(red: 0.9857015014, green: 0.9078420997, blue: 0.9913361669, alpha: 1)
-        }
         
-        cell.configure(by: p)
+
+            let p = pays[indexPath.row]
+            if (p.user == "Дима") {
+                cell.backgroundColor = #colorLiteral(red: 0.8778790236, green: 0.99674505, blue: 0.965611279, alpha: 1)
+            } else {
+                cell.backgroundColor = #colorLiteral(red: 0.9857015014, green: 0.9078420997, blue: 0.9913361669, alpha: 1)
+            }
+            cell.configure(by: p)
         
-       
-         return cell
-        
+
+        return cell
     }
     
 

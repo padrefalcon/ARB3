@@ -193,8 +193,9 @@ class ListFirstLevelView: UITableViewController {
             let urlText = "http://89.223.26.123:7777/w/detail?name="
             let escapedRoomName = String( selectedRoomName.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlQueryAllowed)!)
             getDataRoomList(jsonUrlString: "\(urlText)\(escapedRoomName)") {
-                //print(rooms)
-                self.tableView.numberOfRows(inSection: rooms.count)
+//                print(rooms.count)
+//                print(self.tableView.numberOfRows(inSection: 0))
+                self.tableView.numberOfRows(inSection: 0)
                 self.navigationItem.title = selectedRoomName
                 self.tableView.reloadData()
                 
